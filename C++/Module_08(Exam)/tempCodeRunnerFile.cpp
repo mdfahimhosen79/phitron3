@@ -1,0 +1,1 @@
+getline(cin,a[i].name);
