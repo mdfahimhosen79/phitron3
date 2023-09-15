@@ -13,16 +13,16 @@ class Node
         this->right = NULL;
     }
 }; 
-void preorder(Node* root)
+void postorder(Node* root)
 {
     // base case
     if(root == NULL)
     {
         return;
     }
-    cout<<root->val<<" ";
-    preorder(root->left);
-    preorder(root->right);
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->val<<" ";    
 }
 int main()
 {
@@ -46,6 +46,6 @@ int main()
     b->right = d;
     d->left = f;
     d->right = g;
-    preorder(root);
+    postorder(root);
     return 0;
 }
