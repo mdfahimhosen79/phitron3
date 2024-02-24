@@ -1,72 +1,73 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Node{
-    public:
-     int val;
-     Node * left;
-     Node * right;
-     Node(int val)
-     {
+class Node
+{
+public:
+    int val;
+    Node *left;
+    Node *right;
+    Node(int val)
+    {
         this->val = val;
         this->left = NULL;
         this->right = NULL;
-     }
-};
-void levelorder(Node* root)
-{
-    if(root == NULL) return;
-    queue<Node*> q;
-    q.push(root);
-    while(!q.empty())
-    {   
-        // ber kore ana
-        Node * f = q.front();
-        q.pop();
-        // jabotio ja kaj
-        cout<<f->val<<" ";
-        // children gula ke line(queue) e dao
-        if(f->left != NULL) q.push(f->left); 
-        if(f->right != NULL) q.push(f->right); 
     }
-}
-Node* input_tree()
+};
+Node *input_tree()
 {
     int val;
-    cin>>val;
-    Node * root;
-    if(val == -1) root = NULL; 
-    else root = new Node(val);
-
-    queue <Node*> a;
-    if(root!=NULL) a.push(root);
-
-    while(!a.empty())
+    cin >> val;
+    Node *root;
+    if (val == -1)
     {
-        // 1st step
-        Node* p = a.front();
-        a.pop();
-
-        // 2nd step
-        int l,r;
-        cin>>l>>r;
-        Node * myleft,*myright;
-        if(l != -1) myleft = new Node(l);
-        else myleft = NULL;
-        if(r==-1) myright = NULL;
-        else myright = new Node(r);
-
-        p->left = myleft;
-        p->right = myright;
-        
-        // 3rd step;
-        if(p->left != NULL) a.push(p->left);
-        if(p->right != NULL) a.push(p->right);
+        root = NULL;
+    }
+    else
+    {
+        root = new Node(val);
+    }
+    queue<Node *> q;
+    if (root != NULL)
+        q.push(root); // shortcut if(root) q.push(root);
+    while (!q.empty())
+    {
+        // ber kore ano
+        Node *f = q.front();
+        q.pop();
+        // jabotio kaj koro
+        int l, r;
+        cin >> l >> r;
+        Node *left;
+        Node *right;
+        if (l == -1)
+            left = NULL;
+        else
+            left = new Node(l);
+        if (r == -1)
+            right = NULL;
+        else
+            right = new Node(r);
+        // connection
+        f->left = left;
+        f->right = right;
+        // children gula ke push kor
+        if (f->left != NULL)
+            q.push(f->left);
+        if (f->right != NULL)
+            q.push(f->right);
     }
     return root;
 }
+int maxHeight(Node* root)
+{
+    if(root == NULL) return 0;
+    int l = maxHeight(root->left);
+    int r = maxHeight(root->right);
+    return max(l,r) + 1;
+}
 int main()
 {
-    Node * root = input_tree();
-    levelorder(root);
+    Node *root = input_tree();
+    cout << maxHeight(root)-1;
     return 0;
-} 
+}
