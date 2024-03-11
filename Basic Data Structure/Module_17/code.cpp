@@ -1,73 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Node
+void solve()
 {
-public:
-    int val;
-    Node *left;
-    Node *right;
-    Node(int val)
+    int n;
+    cin>>n;
+    string s1,s2,s3;
+    cin>>s1>>s2>>s3;
+    // cout<<d<<endl;
+    string d;
+    for(int i=0; i<s1.length(); i++)
     {
-        this->val = val;
-        this->left = NULL;
-        this->right = NULL;
+        if(s1[i] == s3[i])
+        {
+            d.push_back(s1[i]);
+        }
     }
-};
-Node *input_tree()
-{
-    int val;
-    cin >> val;
-    Node *root;
-    if (val == -1)
+    
+    for (int i = 0; i < s2.length(); i++)
     {
-        root = NULL;
+        if(s1[i] != s2[i] && s2[i] == s3[i])
+        {
+            d.push_back(s2[i]);
+        }
     }
-    else
+        
+    
+    if(s3.length() == d.length())
     {
-        root = new Node(val);
+        cout<<"NO"<<endl;
+    }else{
+        cout<<"YES"<<endl;
     }
-    queue<Node *> q;
-    if (root != NULL)
-        q.push(root); // shortcut if(root) q.push(root);
-    while (!q.empty())
-    {
-        // ber kore ano
-        Node *f = q.front();
-        q.pop();
-        // jabotio kaj koro
-        int l, r;
-        cin >> l >> r;
-        Node *left;
-        Node *right;
-        if (l == -1)
-            left = NULL;
-        else
-            left = new Node(l);
-        if (r == -1)
-            right = NULL;
-        else
-            right = new Node(r);
-        // connection
-        f->left = left;
-        f->right = right;
-        // children gula ke push kor
-        if (f->left != NULL)
-            q.push(f->left);
-        if (f->right != NULL)
-            q.push(f->right);
-    }
-    return root;
-}
-int maxHeight(Node* root)
-{
-    if(root == NULL) return 0;
-    int l = maxHeight(root->left);
-    int r = maxHeight(root->right);
-    return max(l,r) + 1;
 }
 int main()
 {
-    Node *root = input_tree();
-    cout << maxHeight(root)-1;
+    int t;
+    cin>>t;
+    while(t--)solve();
     return 0;
 }

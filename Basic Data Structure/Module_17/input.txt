@@ -1,1 +1,17 @@
-10 20 60 30 50 70 -1 -1 40 -1 -1 -1 -1 80 -1 -1 -1
+4
+1
+a
+b
+c
+2
+aa
+bb
+aa
+10
+mathforces
+luckforces
+adhoccoder
+3
+acc
+abd
+abc
