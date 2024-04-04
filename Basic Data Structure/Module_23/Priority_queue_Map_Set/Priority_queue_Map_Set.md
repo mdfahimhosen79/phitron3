@@ -41,15 +41,15 @@ int main()
         {
             int x;
             cin >> x;
-            pq.push(x);
+            pq.push(x); // O(logN)
         }
         else if (c == 1)
         {
-            pq.pop();
+            pq.pop(); //O(logN)
         }
         else if (c == 2)
         {
-            cout << pq.top() << endl;
+            cout << pq.top() << endl; // O(1)
         }
         else
         {
