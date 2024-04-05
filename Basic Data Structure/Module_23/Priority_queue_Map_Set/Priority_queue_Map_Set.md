@@ -132,3 +132,28 @@ int main()
     return 0;
 }
 ```
+```
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    map<string,int> mp;
+    //mp.insert({"Sakib Al Hasan",75});
+    //mp.insert({"Tamim",50});
+    //mp.insert({"Mushfiq",45});
+    mp["sakib al hasan"] = 75; //O(logN)
+    mp["aqib"] = 10;
+    mp["tamim"] = 50;
+    
+    //cout<<mp["Tamim"];
+    if(mp.count("aqib"))
+    {
+        cout<<"ache"<<endl; // O(logN)
+    }else 
+        {
+            cout<<"Nai"<<endl; // O(logN)
+        }
+    return 0;
+}
+```
