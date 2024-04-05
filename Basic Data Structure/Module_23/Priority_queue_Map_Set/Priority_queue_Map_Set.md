@@ -113,3 +113,22 @@ int main()
   return 0;
 }
 ```
+#### STL Map
+```
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    map<string,int> mp;
+    mp.insert({"Sakib Al Hasan",75});
+    mp.insert({"Tamim",50});
+    mp.insert({"Mushfiq",45});
+    for(auto it = mp.begin(); it!=mp.end();it++)
+        {
+            cout<<it->first<<" "<<it->second<<endl;
+        }
+    return 0;
+}
+```
