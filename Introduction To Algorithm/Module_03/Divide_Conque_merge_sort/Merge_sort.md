@@ -45,7 +45,7 @@ void mergesort(int l, int r)
     if (l == r)
         return;
     int mid = (l + r) / 2;
-    mergesort(0, mid);
+    mergesort(l, mid);
     mergesort(mid + 1, r);
     merge(l, r, mid);
 }
